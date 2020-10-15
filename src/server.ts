@@ -11,7 +11,7 @@ import "./database/connection";
 import routes from "./routes";
 import errorhandler from "./errors/handler";
 
-const PORT = process.env.PORT || 5000;
+const PORT: string | number = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
