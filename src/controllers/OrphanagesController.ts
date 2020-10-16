@@ -41,10 +41,10 @@ export default {
 
     const orphanagesRepository = getRepository(Orphanages);
     // console.log(req.files);
-
     const requestImages = req.files as Express.Multer.File[];
     const images = requestImages.map((image) => {
-      return { path: image.filename };
+      const filename = image.filename.replace(" ", "-");
+      return { path: filename };
     });
 
     const data = {
@@ -72,13 +72,11 @@ export default {
       ),
     });
 
-    const finalData = schema.cast(data);
-
     await schema.validate(data, {
       abortEarly: false, //retorna todos os erros ao mesmo tempo
     });
 
-    const orphanage = orphanagesRepository.create(finalData);
+    const orphanage = orphanagesRepository.create(data);
 
     await orphanagesRepository.save(orphanage);
 
