@@ -1,5 +1,5 @@
 import { ErrorRequestHandler } from "express";
-import { ValidationError } from "yup";
+import * as Yup from "yup";
 
 interface ValidationError {
   [key: string]: string[];
@@ -8,7 +8,7 @@ interface ValidationError {
 const errorHandler: ErrorRequestHandler = (error, req, res, next) => {
   console.error(error);
 
-  if (error instanceof ValidationError) {
+  if (error instanceof Yup.ValidationError) {
     let errors: ValidationError = {};
 
     error.inner.forEach((err) => {
