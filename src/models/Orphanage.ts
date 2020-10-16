@@ -5,7 +5,6 @@ import {
   OneToMany,
   JoinColumn,
 } from "typeorm";
-
 import Image from "./Image";
 
 @Entity("orphanages")
@@ -23,7 +22,7 @@ export default class Orphanage {
   longitude: number;
 
   @Column()
-  about: number;
+  about: string;
 
   @Column()
   instructions: string;

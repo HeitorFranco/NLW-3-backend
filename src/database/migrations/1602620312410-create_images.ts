@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class createImages1602620312410 implements MigrationInterface {
+export class createImages1601404945917 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
@@ -27,8 +27,8 @@ export class createImages1602620312410 implements MigrationInterface {
           {
             name: "ImageOrphanage",
             columnNames: ["orphanage_id"],
-            referencedTableName: "orphanages",
             referencedColumnNames: ["id"],
+            referencedTableName: "orphanages",
             onUpdate: "CASCADE",
             onDelete: "CASCADE",
           },
